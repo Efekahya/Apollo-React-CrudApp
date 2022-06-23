@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useQuery, gql, useMutation } from "@apollo/client";
-import axios from "axios";
 export default function EditCard() {
   const [isLoading, setIsLoading] = useState(false);
   console.log(window.location.pathname.split("/")[2]);
@@ -51,7 +50,7 @@ export default function EditCard() {
       }
     }
   `;
-  const [deletePerson, data] = useMutation(DELETE);
+  const [deletePerson] = useMutation(DELETE);
   const [updatePerson, mutationData] = useMutation(MUTATION);
   const handleSubmit = async (e: any) => {
     e.preventDefault();

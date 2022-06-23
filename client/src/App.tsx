@@ -1,5 +1,4 @@
 import React from "react";
-import Container from "./components/Container";
 import CharacterCard from "./components/CharacterCard";
 import EditCard from "./components/EditCard";
 import AddCharacter from "./components/AddCharacter";

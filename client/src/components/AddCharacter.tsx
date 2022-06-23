@@ -19,7 +19,7 @@ export default function AddCharacter() {
     }
   `;
 
-  const [add, data] = useMutation(ADD_CHARACTER);
+  const [add] = useMutation(ADD_CHARACTER);
 
   const handleSubmit = async (e: any) => {
     setIsLoading(true);
