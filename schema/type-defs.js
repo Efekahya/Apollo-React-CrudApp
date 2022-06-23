@@ -33,7 +33,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    createPerson(name: String!, location: String, image: String): Person!
+    createPerson(name: String!, location: String!, image: String!): Person!
     deletePerson(id: Int!): Person
     updatePerson(
       id: Int!
