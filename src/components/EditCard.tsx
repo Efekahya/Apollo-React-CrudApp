@@ -113,7 +113,7 @@ export default function EditCard() {
   }
   return (
     <>
-      <div className="row mt-5">
+      <div className="row mt-5 " data-testid="card">
         <div className="col-4">
           <div className="row ml-2">
             <div className="col">
@@ -202,5 +202,5 @@ export default function EditCard() {
         </div>
       </div>
     </>
-  );
+  )
 }
