@@ -1,6 +1,7 @@
 import { gql, useMutation } from "@apollo/client";
-import React from "react";
+import React, { useState } from "react";
 export default function AddCharacter() {
+  const [isLoading, setIsLoading] = useState(false);
   const ADD_CHARACTER = gql`
     mutation AddNewCharacter(
       $name: String!
@@ -21,6 +22,7 @@ export default function AddCharacter() {
   const [add, data] = useMutation(ADD_CHARACTER);
 
   const handleSubmit = async (e: any) => {
+    setIsLoading(true);
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", e.target.image.files[0]);
@@ -40,10 +42,11 @@ export default function AddCharacter() {
         image: data.secure_url,
       },
     });
+    setIsLoading(false);
   };
   return (
     <>
-      <div className="col-5">
+      <div className="col-5 ">
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <input
@@ -65,11 +68,17 @@ export default function AddCharacter() {
               id="image"
               accept="image/*"
             />
-            <button
-              type="submit"
-              className="btn btn-secondary form-control w-25"
-            >
-              OK
+            <button type="submit" className="btn btn-secondary form-control">
+              {isLoading ? (
+                <>
+                  Loading...
+                  <div className="spinner-border text-light ml-2" role="status">
+                    <span className="sr-only">Loading...</span>
+                  </div>
+                </>
+              ) : (
+                "Add Character"
+              )}
             </button>
           </div>
         </form>
