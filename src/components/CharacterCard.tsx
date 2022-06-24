@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useQuery, gql } from "@apollo/client"
-
+import styles from "../styles.module.css"
 export default function CharacterCard() {
   const [character, setCharacter] = useState<Array<any>>([])
   const [PAGE, setPAGE] = useState<number>(0)
@@ -140,109 +140,122 @@ export default function CharacterCard() {
       setCharacter(newAll.data.characters)
     }
   }
-  const handleEdit = (e: any) => {
-    window.location.href = `/edit/${e.target.id}`
-  }
   const handleAddCharacter = () => {
     window.location.href = "/add"
   }
 
   return (
-    <div className="container ">
-      <div className="dropdown">
-        <button
-          className="btn btn-secondary dropdown-toggle mb-2"
-          type="button"
-          id="dropdownMenuButton"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Filter
-        </button>
-        <button
-          className="btn btn-secondary ml-2 mb-2"
-          id="newCharacter"
-          onClick={handleAddCharacter}
-          data-testid="newCharacter"
-        >
-          Add New Character
-        </button>
-        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <li>
-            <button id="all" className="dropdown-item" onClick={handleClick}>
-              All characters
-            </button>
-          </li>
-          <li>
-            <button
-              id="rick"
-              className="dropdown-item"
-              onClick={handleClick}
-              data-testid="ricks"
-            >
-              Ricks
-            </button>
-          </li>
-          <li>
-            <button id="morty" className="dropdown-item" onClick={handleClick}>
-              Mortys
-            </button>
-          </li>
-        </ul>
-      </div>
+    <div className={styles.container}>
       {character && (
-        <div className="row row-cols-2" data-testid="scroll" key="keyoo">
-          {character.map(
-            (character: {
-              id: number
-              image: string
-              name: string
-              location: { name: string; url: string }
-            }) => {
-              return (
-                <>
-                  <div
-                    className="col"
-                    key={character.id}
-                    data-testid="character"
-                  >
-                    <div className="card border border-3 border-secondary rounded text-white bg-dark mb-2">
-                      <div className="row w-100">
-                        <div className="col-2">
-                          <img
-                            src={character.image}
-                            className="img rounded"
-                            style={{ width: "100px", height: "100px" }}
-                            alt="character"
-                          />
-                        </div>
-                        <div className="col-8">
-                          <div className="card-body">
-                            <h5 className="card-title">#ID: {character.id}</h5>
-                            <p className="card-text">
-                              <b>{character.name}</b> is from{" "}
-                              <b>{character.location.name}</b>
-                            </p>
+        <span data-testid="scroll">
+          <div className="dropdown mb-2">
+            <button
+              className="btn btn-dark dropdown-toggle mb-2"
+              type="button"
+              id="dropdownMenuButton"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Filter
+            </button>
+            <button
+              className={"btn btn-dark ml-2 mb-2"}
+              id="newCharacter"
+              onClick={handleAddCharacter}
+              data-testid="newCharacter"
+            >
+              Add New Character
+            </button>
+            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li>
+                <button
+                  id="all"
+                  className="dropdown-item"
+                  onClick={handleClick}
+                >
+                  All characters
+                </button>
+              </li>
+              <li>
+                <button
+                  id="rick"
+                  className="dropdown-item"
+                  onClick={handleClick}
+                  data-testid="ricks"
+                >
+                  Ricks
+                </button>
+              </li>
+              <li>
+                <button
+                  id="morty"
+                  className="dropdown-item"
+                  onClick={handleClick}
+                >
+                  Mortys
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div className={styles.items}>
+            {character.map(
+              (character: {
+                id: number
+                image: string
+                name: string
+                location: { name: string; url: string }
+              }) => {
+                return (
+                  <>
+                    <div className={styles.item}>
+                      <div className={styles.img}>
+                        <img
+                          src={character.image}
+                          alt="avatar"
+                          style={{
+                            width: "100%",
+                          }}
+                        />
+                      </div>
+                      <div className={styles.content}>
+                        <div className={styles.id}>
+                          <div>
+                            <span className={styles["id-title"]}>#id: </span>{" "}
+                            {character.id}
+                          </div>
+                          <div>
+                            <a
+                              href={"edit/" + character.id}
+                              className={styles["edit-btn"]}
+                            >
+                              Edit
+                            </a>
                           </div>
                         </div>
-                        <div className="col align-self-center">
-                          <button
-                            id={character.id.toString()}
-                            className="btn bg-secondary align-self-center"
-                            onClick={handleEdit}
-                          >
-                            Edit
-                          </button>
+                        <div className={styles.details}>
+                          <div className={styles.name}>
+                            <span className={styles["detail-title"]}>
+                              Name:{" "}
+                            </span>{" "}
+                            {character.name}
+                          </div>
+                          <div className={styles.location}>
+                            <span className={styles["detail-title"]}>
+                              Location:{" "}
+                            </span>{" "}
+                            {character.location.name}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </>
-              )
-            }
-          )}
-        </div>
+                  </>
+                )
+              }
+            )}
+          </div>
+        </span>
       )}
     </div>
   )
 }
+

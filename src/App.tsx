@@ -6,10 +6,10 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 function App() {
   return (
     <>
-      <div className="navbar ml-5 mb-2">
+      <div className="navbar mt-2 ml-5">
         <a
           href="/"
-          className="navbar-brand text-white ml-5 border border-secondary rounded p-2"
+          className="navbar-brand bg-dark text-white ml-5 border border-secondary rounded p-2"
         >
           Home
         </a>
