@@ -1,0 +1,214 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fff;
+    font-family: Roboto;
+}
+
+/*genel template*/
+
+.header {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 48px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header .controls a {
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    background-color: #333;
+    padding: 8px 16px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.header .controls .filter {
+    padding: 8px 16px;
+    outline: 0;
+    border: 0;
+    background-color: #333;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.header .controls a:hover {
+    background-color: rgb(28, 28, 28);
+}
+
+.header h3 {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.container {
+    margin: 0 auto;
+    width: 80%;
+    margin-bottom: 40px;
+}
+
+@media screen and (max-width: 600px) {
+    .header {
+        flex-direction: column;
+    }
+
+    .header .title {
+        margin-bottom: 12px;
+    }
+}
+
+/*genel template/*
+
+/* AnaSayfa */
+
+.items {
+    display: grid;
+    column-gap: 100px;
+    row-gap: 50px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.item {
+    display: flex;
+    height: 168px;
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    filter: drop-shadow(0px 6px 16px rgba(0, 0, 0, 0.1));
+    border-radius: 10px;
+}
+
+.item .img {
+    border-radius: 10px 0px 0px 10px;
+    overflow: hidden;
+    width: 168px;
+}
+
+.item .content {
+    padding: 16px;
+    color: #808080;
+}
+
+.item .content .id {
+    font-size: 16px;
+    color: #000;
+}
+
+.item .content .id .edit-btn {
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    background-color: #333;
+    padding: 2px 8px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 12px;
+}
+
+.item .content .details {
+    font-size: 14px;
+    position: absolute;
+    bottom: 16px;
+}
+
+.id-title,
+.detail-title {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 1000px) {
+    .items {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* anasayfa*/
+
+/* Add.html edit.html formları*/
+
+.form {
+    width: 100%;
+    text-align: center;
+}
+
+.form .input {
+    margin-bottom: 10px;
+}
+
+.form .form_button {
+    margin-bottom: 10px;
+}
+
+.form .red-btn button {
+    background-color: #dc3545 !important;
+}
+
+.form .red-btn button:hover {
+    background-color: #c02d3c !important;
+}
+
+.form .input input {
+    padding: 10px 25px;
+    background-color: #fff;
+    border: 0;
+    outline: 0;
+    background-color: #e3e3e3;
+    width: 400px;
+    font-size: 15px;
+    border-radius: 8px;
+}
+
+.form .form-button button {
+    width: 400px;
+    border: 0;
+    outline: 0;
+    padding: 10px 25px;
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+    border-radius: 8px;
+}
+
+.form .form-button button:hover {
+    background-color: rgb(28, 28, 28);
+}
+
+@media screen and (max-width: 500px) {
+    .form {
+        text-align: left;
+    }
+
+    .form .input input {
+        width: 90%;
+    }
+
+    .form .form-button button {
+        width: 90%;
+    }
+}
+
+/*edit.html image */
+.form .image {
+    margin-bottom: 20px;
+}
+
+.form .image img {
+    border-radius: 8px;
+    filter: drop-shadow(0px 6px 16px rgba(0, 0, 0, 0.1));
+}
+
+/*edit.html image */
+
+/* Add.html edit.html formları*/
