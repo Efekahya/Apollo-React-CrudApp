@@ -29,6 +29,7 @@ const typeDefs = gql`
     character(id: Int!): Person!
     ricks(page: Int, limit: Int): [Person!]!
     mortys(page: Int, limit: Int): [Person!]
+    filter(page: Int, limit: Int, name: String): [Person!]
     upload(image: String!): String
   }
 
@@ -42,6 +43,6 @@ const typeDefs = gql`
       image: String
     ): Person!
   }
-`;
+`
 
 module.exports = typeDefs;

@@ -18,6 +18,7 @@ export default function CharacterCard() {
           name
         }
         image
+        gender
       }
     }
   `
@@ -46,6 +47,20 @@ export default function CharacterCard() {
     }
   `
 
+  const GET_FILTER = gql`
+    query GetFilter($page: Int!, $limit: Int!, $name: String!) {
+      filter(page: $page, limit: $limit, name: $name) {
+        name
+        id
+        location {
+          name
+        }
+        image
+        gender
+      }
+    }
+  `
+
   const all = useQuery(GET_CHARACTER, {
     variables: {
       page: PAGE,
@@ -68,6 +83,13 @@ export default function CharacterCard() {
     skip: selection !== 2,
   })
 
+  const filter = useQuery(GET_FILTER, {
+    variables: {
+      page: PAGE,
+      limit: 20,
+      name: "summer",
+    },
+  })
   if (all.error) {
     console.log(all.error)
     return <p>Error :(</p>
@@ -130,6 +152,16 @@ export default function CharacterCard() {
       })
 
       setCharacter(newMortys.data.mortys)
+    }
+    if (e.target.id === "filter") {
+      setSelection(3)
+      let newFilter = await filter.refetch({
+        page: 0,
+        limit: 20,
+        name: "Summer",
+      })
+
+      setCharacter(newFilter.data.filter)
     }
     if (e.target.id === "all") {
       setSelection(0)
@@ -195,6 +227,15 @@ export default function CharacterCard() {
                   Mortys
                 </button>
               </li>
+              <li>
+                <button
+                  id="filter"
+                  className="dropdown-item"
+                  onClick={handleClick}
+                >
+                  Summer
+                </button>
+              </li>
             </ul>
           </div>
           <div className={styles.items}>
@@ -204,6 +245,7 @@ export default function CharacterCard() {
                 image: string
                 name: string
                 location: { name: string; url: string }
+                gender: string
               }) => {
                 return (
                   <>
@@ -244,6 +286,12 @@ export default function CharacterCard() {
                               Location:{" "}
                             </span>{" "}
                             {character.location.name}
+                          </div>
+                          <div className={styles.location}>
+                            <span className={styles["detail-title"]}>
+                              Gender:{" "}
+                            </span>{" "}
+                            {character.gender}
                           </div>
                         </div>
                       </div>
