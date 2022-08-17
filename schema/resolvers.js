@@ -3,7 +3,7 @@ const { argsToArgsConfig } = require("graphql/type/definition");
 
 let characters = axios
   .get(
-    "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/12e5c19f-cd6c-4069-a797-9720f280c57d/ricky-and-morty.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220628%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220628T113841Z&X-Amz-Expires=86400&X-Amz-Signature=561877a7d6f45f02642876388d5209eb12cd6d2d3917134949f227a1ef1f1792&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22ricky-and-morty.json%22&x-id=GetObject"
+    "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/12e5c19f-cd6c-4069-a797-9720f280c57d/ricky-and-morty.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220817%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220817T062400Z&X-Amz-Expires=86400&X-Amz-Signature=ae3db4f9d1b17ffbe7cf74f3104b2c93fc42efcae36b3b45fad2703301e69b1d&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22ricky-and-morty.json%22&x-id=GetObject"
   )
   .then((res) => {
     characters = res.data
